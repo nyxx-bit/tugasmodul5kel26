@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class userService {
-	private String[][] data = new String[2][3];
+    private String[][] data = new String[2][3];
     private String[][] histories = new String[2][4];
     private String email, password, roles = "";
-    private int book;
+    int book;
     
     public userService(String emails, String passwords)
     {
@@ -12,7 +12,7 @@ public class userService {
         password = passwords;
         String[][] data = 
         { 
-            {"alkhawarismi989@gmail.com", "12345", "supedAdmin"},
+            {"alkhawarismi989@gmail.com", "12345", "superAdmin"},
             {"yafiganteng@gmail.com", "12345", "user"} 
         };
         String[][] histories =
@@ -32,6 +32,8 @@ public class userService {
             {
                 if(data[i][1].equals(password))
                 {
+                    if (data[i][0] == histories[i][0])
+                        book = i;
                     roles = data[i][2];
                     return true;
                 }
@@ -45,10 +47,6 @@ public class userService {
         boolean status = checkCredential();
         if(status == true)
         {
-            if (email=="alkhawarismi989@gmail.com")
-                book = 1;
-            else 
-                book = 0;
             System.out.println("\nWelcome " + roles);
             System.out.println("Logged it as user email " + email);
             System.out.println(email + " meminjam buku : ");
@@ -63,8 +61,8 @@ public class userService {
         }
     }
 
-	public static void main(String[] args) {
-		String email, password;
+    public static void main(String[] args) {
+        String email, password;
         
         Scanner input = new Scanner(System.in);
         System.out.print("Email : ");
@@ -74,5 +72,5 @@ public class userService {
         
         userService satu = new userService( email, password );
         satu.login();
-	}
+    }
 }
