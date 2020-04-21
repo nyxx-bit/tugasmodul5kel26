@@ -1,9 +1,13 @@
+package tugasmodul5;
+
 import java.util.Scanner;
 
 public class userService {
     private String[][] data = new String[2][3];
     private String[][] histories = new String[2][4];
-    private String email, password, roles = "";
+    private final String email;
+    private final String password;
+    private String roles = "";
     int book;
     
     public userService(String emails, String passwords)
@@ -32,7 +36,7 @@ public class userService {
             {
                 if(data[i][1].equals(password))
                 {
-                    if (data[i][0] == histories[i][0])
+                    if (data[i][0].equals(histories[i][0]))
                         book = i;
                     roles = data[i][2];
                     return true;
